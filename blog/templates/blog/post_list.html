@@ -6,11 +6,11 @@
     <title>post list</title>
 </head>
 <body>
-    <a href="/accounts/login">login</a> 
+    <a href="/accounts/logout/?next=/">logout</a>
     <h1>post list</h1>
     <hr>
     {% for post in object_list %}
-    <div><h2><a href="{% url 'blog:detail' pk=post.id %}">{{post.title}}</a> | <a href="{% url 'blog:update' pk=post.id %}">edit</a> | <a href="{% url 'blog:delete' pk=post.id %}">delete</a> </h2></div>
+    <div><h2><a href="{% url 'blog:detail' pk=post.id %}">{{post.title}}</a>{% if request.user.type == 2 or request.user.type == 3  %} | <a href="{% url 'blog:update' pk=post.id %}">edit</a> | <a href="{% url 'blog:delete' pk=post.id %}">delete</a> {% endif %}</h2></div>
     <h4>{{ post.body | truncatewords:21 }}...</h4>
      
     {% endfor %}

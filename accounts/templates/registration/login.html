@@ -9,9 +9,9 @@
 
 <body>
     <h1>Login</h1>
-    <form action="/" method="post">{% csrf_token %}
+    <form action="." method="post">{% csrf_token %}
         {{ form.as_p }}
-        <button>login</button>
+        <button type="submit">login</button>
     </form>
 </body>
 
